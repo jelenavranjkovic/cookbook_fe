@@ -11,21 +11,67 @@
 			document.getElementById('login-form-password').value = '';
 		}
 
-		function getAllPosts(){
+		function getAllRecipes(){
 			var request = new XMLHttpRequest();
 		  request.onreadystatechange = function() {
 		    if (this.readyState == 4 && this.status == 200) {
 					var posts = JSON.parse(this.response);
 					var recipeDiv = document.getElementById('receptiPrikaz');
-					for(i = 0; i < posts.length; i++) {
+					for(var i = 0; i < posts.length; i++) {
 						console.log(posts[i]);
-						var postDiv = document.createElement('div');
-						postDiv.innerHTML = 'Title:' + posts[i].title + ', Content: ' + posts[i].content;
-						recipeDiv.append(postDiv);
+						
+						var divTitle = document.createElement('div');
+						var divContent = document.createElement('div');
+						var divContainer = document.createElement('div');
+						
+						divTitle.innerHTML = 'Title:' + posts[i].title;
+						divContent.innerHTML = 'Content: ' + posts[i].content;
+						
+						divContainer.append(divTitle);
+						divContainer.append(divContent);
+						
+						recipeDiv.append(divContainer);
+						
+						divTitle.classList.add('titleStyle');
+						divContent.classList.add('contentStyle');
+						divContainer.classList.add('containerStyle');
+						recipeDiv.classList.add('recipeDivStyle');
 					}
 				}
 		  };
-			request.open("GET", "http://localhost:3000/getAllPosts", true);
+			request.open("GET", "http://localhost:3000/getAllPosts/type/RECIPE", true);
+			request.send();
+		}
+
+		function getAllBlogs(){
+			var request = new XMLHttpRequest();
+		  request.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+					var posts = JSON.parse(this.response);
+					var blogDiv = document.getElementById('blogPrikaz');
+					for(var i = 0; i < posts.length; i++) {
+						console.log(posts[i]);
+						var divTitle = document.createElement('div');
+						var divContent = document.createElement('div');
+						var divContainer = document.createElement('div');
+						
+						divTitle.innerHTML = 'Title:' + posts[i].title;
+						divContent.innerHTML = 'Content: ' + posts[i].content;
+						
+						divContainer.append(divTitle);
+						divContainer.append(divContent);
+						
+						blogDiv.append(divContainer);
+						
+						divTitle.classList.add('titleStyle');
+						divContent.classList.add('contentStyle');
+						divContainer.classList.add('containerStyle');
+						blogDiv.classList.add('blogDivStyle');
+					}
+				}
+		  };
+			
+			request.open("GET", "http://localhost:3000/getAllPosts/type/BLOG", true);
 			request.send();
 		}
 

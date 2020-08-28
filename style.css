@@ -136,3 +136,23 @@ header {
 table, tr, td {
 	border: 1px solid black;
 }
+.titleStyle {
+	text-decoration: underline;
+	text-align: center;
+}
+.contentStyle{
+}
+.containerStyle {
+	flex-basis: 350px;
+	margin: 20px;
+}
+.blogDivStyle{
+	display: flex;
+	justify-content: center;
+	flex-flow: row wrap;
+}
+.recipeDivStyle{
+	display: flex;
+	justify-content: center;
+	flex-flow: row wrap;
+}
