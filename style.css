@@ -137,14 +137,23 @@ table, tr, td {
 	border: 1px solid black;
 }
 .titleStyle {
-	text-decoration: underline;
 	text-align: center;
+	margin-bottom: 10px;
+}
+
+.hiddenButton {
+	display: none;
 }
 .contentStyle{
 }
 .containerStyle {
+	background: url( "images/pastel4.jpg") center center / cover no-repeat fixed;
+	padding: 20px;
 	flex-basis: 350px;
+	/*height: 200px;
+	overflow: hidden;*/
 	margin: 20px;
+	border-radius: 20px;
 }
 .blogDivStyle{
 	display: flex;
@@ -155,4 +164,23 @@ table, tr, td {
 	display: flex;
 	justify-content: center;
 	flex-flow: row wrap;
+}
+.componentStyle {
+	margin: 5px 0 5px 15px;
+}
+.btnReadMoreStyle {
+	background-color: #FFF;
+	color: #000345;
+	border-radius: 5%;
+	font-family: 'Balsamiq Sans';
+	text-decoration: none;
+	float: right;
+	padding: 5px;
+	margin: 0 10px 5px;
+}
+.btnToTop {
+	margin: 0;
+	position: absolute;
+	left: 47%;
+	top: 30px;
 }

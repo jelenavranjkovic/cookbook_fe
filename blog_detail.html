@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Recepti</title>
+	<title>Blog</title>
 	<link href="style.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -10,7 +10,7 @@
 	<script src="script.js" type="text/javascript"></script>
 
 </head>
-<body onload="getAllRecipes()">
+<body onload="onBlogDetailLoad()">
 
 		<div id="login-form" class="login-form login-hidden">
 		<div class="login-form-content">
@@ -46,46 +46,44 @@
 					<li><a href="recepti.html">RECEPTI</a></li>
 					<li><a href="blog.html">BLOG</a></li>
 					<li><a href="#kontakt">KONTAKT</a></li>
-					<li><button id="btnSubmit" onClick="login()">prijavite se</button></li>
+					<li><button id="btnSubmit" onClick="login()" type="reset">prijavite se</button></li>
 				</ul>
 		</nav>
 	</header>
 
-		<section>
+	<p id="title"> </p>
+  <p id="content"> </p>
 
-			<a name="recepti"></a>
+  <input id="newCommentInput" class="hiddenButton" type="text"/>
+  <button onClick="createComm()" type="button" class="hiddenButton" id="newCommentButton">
+    Dodaj komentar
+  </button>
 
-			<br>
-			<button class="hiddenButton btnReadMoreStyle btnToTop" id="createRecipeButton">Dodaj recept</button>
+  <div id="komentarPrikaz"></div>
 
-			<div id="receptiPrikaz">	
-			</div>
-
-		</section>
-	
 	<div>
 			<a href="#BackToTop" class="BackToTop">NA POČETAK</a>
 	</div>
-	
+
 	<br>
 	<br>
-	
+
 	<footer id="footer">
-	
+
 		<a name="kontakt"></a>
-		
+
 		<hr>
-		
+
 		<h4>KONTAKT</h4>
-		
+
 				<button class="btnAwesome"><i class="fa fa-phone"></i></button>
-				
+
 				<span>+381/66417778</span>
-				
+
 				<button class="btnAwesome"><i class="fa fa-envelope"></i></button>
-				
+
 				<span>jelenavranjkovic@yahoo.com</span>
-		
+
 	</footer>
 
 </body>
