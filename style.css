@@ -77,7 +77,7 @@ p {
 	float: right;
 	padding: 5px;
 	margin: 0 10px 5px;
-	
+
 }
 #username {
 	display: flex;
@@ -104,7 +104,7 @@ header {
 	padding: 0;
 	margin: 0;
 	display: flex;
-	
+
 }
 #nav ul li a {
 	display: block;
@@ -183,4 +183,60 @@ table, tr, td {
 	position: absolute;
 	left: 47%;
 	top: 30px;
+}
+#newPostStyle {
+	background: url( "images/pastel4.jpg") center center / cover no-repeat fixed;
+	padding: 20px;
+	width: 400px;
+	height: 270px;
+	margin: 0 auto;
+	border-radius: 20px;
+}
+#newPostTitleStyle,
+#newPostContentStyle {
+	display: flex;
+	margin-left: 60px;
+}
+#newPostTitle {
+	margin-bottom: 7px;
+	margin-left: 10px;
+	border-radius: 8%;
+}
+#newPostContent {
+	height: 200px;
+	border-radius: 5%;
+	margin-bottom: 7px;
+	margin-left: 5px;
+}
+#blogButton {
+	background-color: #FFF;
+	color: #000345;
+	border-radius: 5%;
+	font-family: 'Balsamiq Sans';
+	margin: 7px 0 0 170px;
+}
+#title {
+	text-align: center;
+}
+#newCommentStyle {
+	background: url( "images/pastel4.jpg") center center / cover no-repeat fixed;
+	padding: 20px;
+	width: 400px;
+	height: 100px;
+	margin-left: 50px;
+	border-radius: 20px;
+}
+#newCommentInput {
+	width: 300px;
+	height: 70px;
+	border-radius: 5%;
+	margin-bottom: 7px;
+	margin-left: 5px;
+}
+#newCommentButton {
+	background-color: #FFF;
+	color: #000345;
+	border-radius: 5%;
+	font-family: 'Balsamiq Sans';
+	margin: 7px 0 0 170px;
 }

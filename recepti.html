@@ -47,6 +47,7 @@
 					<li><a href="blog.html">BLOG</a></li>
 					<li><a href="#kontakt">KONTAKT</a></li>
 					<li><button id="btnSubmit" onClick="login()">prijavite se</button></li>
+					<li><button id="btnSubmit" onclick="logout()">odjavite se</button></li>
 				</ul>
 		</nav>
 	</header>
@@ -56,36 +57,47 @@
 			<a name="recepti"></a>
 
 			<br>
-			<button class="hiddenButton btnReadMoreStyle btnToTop" id="createRecipeButton">Dodaj recept</button>
 
-			<div id="receptiPrikaz">	
+			<div id="newPostStyle" class="hiddenButton">
+
+		<div id="newPostTitleStyle">	Naslov:	<input id="newPostTitle" class="hiddenButton" type="text"/> </div>
+		<div id="newPostContentStyle">	Sadržaj: <input id="newPostContent" class="hiddenButton" type="text"/> </div>
+		<div>	<button onClick="createPost('RECIPE')" class="hiddenButton" id="blogButton">Dodaj recept</button> </div>
+
 			</div>
 
+			<br>
+			<br>
+
+			<div id="komentarPrikaz"></div>
+
+			<div id="receptiPrikaz"></div>
+
 		</section>
-	
+
 	<div>
 			<a href="#BackToTop" class="BackToTop">NA POČETAK</a>
 	</div>
-	
+
 	<br>
 	<br>
-	
+
 	<footer id="footer">
-	
+
 		<a name="kontakt"></a>
-		
+
 		<hr>
-		
+
 		<h4>KONTAKT</h4>
-		
+
 				<button class="btnAwesome"><i class="fa fa-phone"></i></button>
-				
+
 				<span>+381/66417778</span>
-				
+
 				<button class="btnAwesome"><i class="fa fa-envelope"></i></button>
-				
+
 				<span>jelenavranjkovic@yahoo.com</span>
-		
+
 	</footer>
 
 </body>

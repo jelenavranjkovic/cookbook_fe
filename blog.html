@@ -47,6 +47,7 @@
 					<li><a href="blog.html">BLOG</a></li>
 					<li><a href="#kontakt">KONTAKT</a></li>
 					<li><button id="btnSubmit" onClick="login()" type="reset">prijavite se</button></li>
+					<li><button id="btnSubmit" onclick="logout()">odjavite se</button></li>
 				</ul>
 		</nav>
 	</header>
@@ -57,11 +58,11 @@
 
 		<br>
 
-		<div>
+		<div id="newPostStyle" class="hiddenButton">
 
-			<input id="newPostTitle" class="hiddenButton" type="text"/>
-			<input id="newPostContent" class="hiddenButton" type="text"/>
-			<button onClick="createPost('BLOG')" class="hiddenButton" id="blogButton">Dodaj blog</button>
+	<div id="newPostTitleStyle">	Naslov:	<input id="newPostTitle" class="hiddenButton" type="text"/> </div>
+	<div id="newPostContentStyle">	Sadržaj: <input id="newPostContent" class="hiddenButton" type="text"/> </div>
+	<div>	<button onClick="createPost('BLOG')" class="hiddenButton" id="blogButton">Dodaj blog</button> </div>
 
 
 		</div>
@@ -69,9 +70,7 @@
 		<br>
 		<br>
 
-		<button onClick="getPostComments()">getComments</button>
 		<div id="komentarPrikaz"></div>
-
 
 		<div id="blogPrikaz"></div>
 

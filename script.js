@@ -11,6 +11,57 @@
 			document.getElementById('login-form-password').value = '';
 		}
 
+
+		function getCommentsForRecipes(id){
+					window.location.href = "recipe_detail.html?id=" + id;
+				}
+
+		function onRecipeDetailLoad() {
+					const urlParams = new URLSearchParams(window.location.search);
+					const id = urlParams.get('id');
+					var request = new XMLHttpRequest();
+				  request.onreadystatechange = function() {
+					  if (this.readyState == 4 && this.status == 200) {
+								var blogDetails = JSON.parse(this.response);
+								console.log(blogDetails);
+								document.getElementById('title').innerHTML = blogDetails.title;
+								document.getElementById('content').innerHTML = blogDetails.content;
+								var komDiv = document.getElementById('komentarPrikaz');
+								var komentar = blogDetails.comments;
+								for(var i = 0; i < komentar.length; i++) {
+									var divDate = document.createElement('div');
+									var divContent = document.createElement('div');
+									var divContainer = document.createElement('div');
+									var divButton = document.createElement('div');
+									divDate.innerHTML = komentar[i].date;
+									divContent.innerHTML = komentar[i].content;
+
+									divContainer.append(divDate);
+									divContainer.append(divContent);
+									divContainer.append(divButton);
+
+									komDiv.append(divContainer);
+
+									divDate.classList.add('titleStyle');
+									divContent.classList.add('contentStyle');
+									divContainer.classList.add('containerStyle');
+
+									komDiv.classList.add('blogDivStyle');
+								}
+								if (localStorage.getItem('userId') != null) {
+									var button = document.getElementById('newCommentButton');
+									button.classList.remove('hiddenButton');
+									var input = document.getElementById('newCommentInput');
+									input.classList.remove('hiddenButton');
+									var divNewCommentStyle = document.getElementById('newCommentStyle');
+									divNewCommentStyle.classList.remove('hiddenButton');
+								}
+						}
+					}
+					request.open("GET", "http://localhost:3000/post/id/" + id, true);
+					request.send();
+				}
+
 		function getAllRecipes(){
 			var request = new XMLHttpRequest();
 		  	request.onreadystatechange = function() {
@@ -23,12 +74,17 @@
 						var divTitle = document.createElement('div');
 						var divContent = document.createElement('div');
 						var divContainer = document.createElement('div');
+						var divButton = document.createElement('div');
+
+						var buttonHtml = '<button onclick=getCommentsForRecipes(' + posts[i].id + ')>Read more &Gt;</button>';
+						divButton.innerHTML = buttonHtml;
 
 						divTitle.innerHTML = posts[i].title;
 						divContent.innerHTML = posts[i].content;
 
 						divContainer.append(divTitle);
 						divContainer.append(divContent);
+						divContainer.append(divButton);
 
 						recipeDiv.append(divContainer);
 
@@ -38,10 +94,14 @@
 						recipeDiv.classList.add('recipeDivStyle');
 					}
 					if(localStorage.getItem('userId') != null && localStorage.getItem('level') == 3) {
-						var button = document.getElementById('createRecipeButton');
+						var button = document.getElementById('blogButton');
 						button.classList.remove('hiddenButton');
-						var input = document.getElementById('newPost');
+						var input = document.getElementById('newPostTitle');
 						input.classList.remove('hiddenButton');
+						var input2 = document.getElementById('newPostContent');
+						input2.classList.remove('hiddenButton');
+						var divNewPostStyle = document.getElementById('newPostStyle');
+						divNewPostStyle.classList.remove('hiddenButton');
 					}
 				}
 		  };
@@ -90,6 +150,8 @@
 							button.classList.remove('hiddenButton');
 							var input = document.getElementById('newCommentInput');
 							input.classList.remove('hiddenButton');
+							var divNewCommentStyle = document.getElementById('newCommentStyle');
+							divNewCommentStyle.classList.remove('hiddenButton');
 						}
 				}
 			}
@@ -135,6 +197,8 @@
 						input.classList.remove('hiddenButton');
 						var input2 = document.getElementById('newPostContent');
 						input2.classList.remove('hiddenButton');
+						var divNewPostStyle = document.getElementById('newPostStyle');
+						divNewPostStyle.classList.remove('hiddenButton');
 					}
 				}
 		  };
@@ -143,13 +207,12 @@
 
 		}
 
-		function createPost(type){ //NE RADI KOD ZA OVU FUNKCIJU, PROVERI
+		function createPost(type){
 			var title = document.getElementById("newPostTitle").value;
 			var content = document.getElementById("newPostContent").value;
 			var creator = localStorage.getItem('userId');
 
-			var requestBody = {type : type, title: title, content: content, creator: creator}; // sta ovde dodati??
-
+			var requestBody = {type : type, title: title, content: content, creator: creator};
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function(){
 				if(this.readyState == 4 && this.status == 201){
@@ -208,4 +271,11 @@
 			xhttp.open("POST", "http://localhost:3000/login", true);
 			xhttp.setRequestHeader('Content-Type', 'application/json')
 			xhttp.send(JSON.stringify(requestBody));
+		}
+
+		function logout() {
+			window.localStorage.clear();
+  		window.location.reload(true);
+  		window.location.replace('/');
+			window.location.href = "index.html"
 		}
