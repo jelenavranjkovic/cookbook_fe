@@ -137,6 +137,13 @@
 							divContainer.append(divContent);
 							divContainer.append(divButton);
 
+							if (localStorage.getItem('userId') != null && localStorage.getItem('level') == 3) {
+								var divButtonDelete = document.createElement('div');
+								var buttonDeleteHtml = '<button onclick=deleteComment(' + komentar[i].id + ')>Delete &Gt;</button>';
+								divButtonDelete.innerHTML = buttonDeleteHtml;
+								divContainer.append(divButtonDelete);
+							}
+
 							komDiv.append(divContainer);
 
 							divDate.classList.add('titleStyle');
@@ -157,6 +164,20 @@
 			}
 			request.open("GET", "http://localhost:3000/post/id/" + id, true);
 			request.send();
+		}
+
+		function deleteComment(id) {
+			console.log(id);
+			var request = new XMLHttpRequest();
+	  	request.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200){
+					location.reload();
+				}
+			}
+			var body = {id : id};
+			request.open("DELETE", "http://localhost:3000/comment", true);
+			request.setRequestHeader('Content-Type', 'application/json')
+			request.send(JSON.stringify(body));
 		}
 
 		function getAllBlogs(){
