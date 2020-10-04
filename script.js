@@ -33,12 +33,47 @@
 									var divContent = document.createElement('div');
 									var divContainer = document.createElement('div');
 									var divButton = document.createElement('div');
-									divDate.innerHTML = komentar[i].date;
+
+									var datum = komentar[i].date;
+									var a = new Date(datum);
+									var godina = a.getFullYear();
+									var mesec = a.getMonth() + 1;
+									var dan = a.getDate();
+									var sat = a.getHours() + 2;
+									var minut = a.getMinutes();
+									if(minut < 10){
+											minut = '0' + minut;
+
+									}
+									var fullDatum = dan + '.' + mesec +  '.' + godina +  ' ' + sat +  ':' + minut;
+									console.log(fullDatum);
+
+									divDate.innerHTML = fullDatum;
 									divContent.innerHTML = komentar[i].content;
+
+									var divUser = document.createElement('div');
+									divUser = komentar[i].user_id;
+									if(divUser == 1){
+										divUser = "pera";
+									}
+									if(divUser == 2){
+										divUser = "mika";
+									}
+									if(divUser == 3){
+										divUser = "zika";
+									}
+									divContainer.append(divUser);
 
 									divContainer.append(divDate);
 									divContainer.append(divContent);
 									divContainer.append(divButton);
+
+									if (localStorage.getItem('userId') != null && localStorage.getItem('level') == 3) {
+										var divButtonDelete = document.createElement('div');
+										var buttonDeleteHtml = '<button class=blogButton onclick=deleteComment(' + komentar[i].id + ')>Obriši komentar</button>';
+										divButtonDelete.innerHTML = buttonDeleteHtml;
+										divContainer.append(divButtonDelete);
+									}
 
 									komDiv.append(divContainer);
 
@@ -76,7 +111,7 @@
 						var divContainer = document.createElement('div');
 						var divButton = document.createElement('div');
 
-						var buttonHtml = '<button onclick=getCommentsForRecipes(' + posts[i].id + ')>Read more &Gt;</button>';
+						var buttonHtml = '<button class=blogButton onclick=getCommentsForRecipes(' + posts[i].id + ')>Čitaj više &Gt;</button>';
 						divButton.innerHTML = buttonHtml;
 
 						divTitle.innerHTML = posts[i].title;
@@ -130,8 +165,36 @@
 							var divContent = document.createElement('div');
 							var divContainer = document.createElement('div');
 							var divButton = document.createElement('div');
-							divDate.innerHTML = komentar[i].date;
+
+							var datum = komentar[i].date;
+							var a = new Date(datum);
+							var godina = a.getFullYear();
+							var mesec = a.getMonth() + 1;
+							var dan = a.getDate();
+							var sat = a.getHours() + 2;
+							var minut = a.getMinutes();
+							if(minut < 10){
+									minut = '0' + minut;
+
+							}
+							var fullDatum = dan + '.' + mesec +  '.' + godina +  ' ' + sat +  ':' + minut;
+							console.log(fullDatum);
+
+							divDate.innerHTML = fullDatum;
 							divContent.innerHTML = komentar[i].content;
+
+							var divUser = document.createElement('div');
+							divUser = komentar[i].user_id;
+							if(divUser == 1){
+								divUser = "pera";
+							}
+							if(divUser == 2){
+								divUser = "mika";
+							}
+							if(divUser == 3){
+								divUser = "zika";
+							}
+							divContainer.append(divUser);
 
 							divContainer.append(divDate);
 							divContainer.append(divContent);
@@ -139,7 +202,7 @@
 
 							if (localStorage.getItem('userId') != null && localStorage.getItem('level') == 3) {
 								var divButtonDelete = document.createElement('div');
-								var buttonDeleteHtml = '<button onclick=deleteComment(' + komentar[i].id + ')>Delete &Gt;</button>';
+								var buttonDeleteHtml = '<button class=blogButton onclick=deleteComment(' + komentar[i].id + ')>Obriši komentar</button>';
 								divButtonDelete.innerHTML = buttonDeleteHtml;
 								divContainer.append(divButtonDelete);
 							}
@@ -193,7 +256,7 @@
 						var divContainer = document.createElement('div');
 						var divButton = document.createElement('div');
 
-						var buttonHtml = '<button onclick=getCommentsForPosts(' + posts[i].id + ')>Read more &Gt;</button>';
+						var buttonHtml = '<button class=blogButton onclick=getCommentsForPosts(' + posts[i].id + ')>Čitaj više &Gt;</button>';
 						divButton.innerHTML = buttonHtml;
 
 						divTitle.innerHTML = posts[i].title;
@@ -238,6 +301,8 @@
 			xhttp.onreadystatechange = function(){
 				if(this.readyState == 4 && this.status == 201){
 					location.reload();
+					document.getElementById('newPostTitle').value = '';
+					document.getElementById('newPostContent').value = '';
 				}
 			};
 			xhttp.open("POST", "http://localhost:3000/post", true);
@@ -259,6 +324,7 @@
 				xhttp.onreadystatechange = function(){
 					if(this.readyState == 4 && this.status == 201){
 						location.reload();
+						document.getElementById('newCommentInput').value = '';
 					}
 				};
 				xhttp.open("POST", "http://localhost:3000/post/id/" + id + "/createComment", true);
@@ -280,6 +346,7 @@
 					/*document.getElementById("poruka").innerHTML = serverResponse.Message; //ne prikazuje*/
 
 					hideLogin();
+
 					localStorage.setItem('userId', serverResponse.id);
 					localStorage.setItem('username', serverResponse.username);
 					localStorage.setItem('level', serverResponse.level);

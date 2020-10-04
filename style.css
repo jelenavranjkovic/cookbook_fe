@@ -115,7 +115,7 @@ header {
 }
 #hero {
 	background: url( "images/hero.jpg") center center / cover no-repeat fixed;
-	padding: 200px 0;
+	padding: 250px 0;
 }
 #kolica {
 	background: url("images/kolica.svg") no-repeat;
@@ -143,8 +143,6 @@ table, tr, td {
 
 .hiddenButton {
 	display: none;
-}
-.contentStyle{
 }
 .containerStyle {
 	background: url( "images/pastel4.jpg") center center / cover no-repeat fixed;
@@ -192,6 +190,18 @@ table, tr, td {
 	margin: 0 auto;
 	border-radius: 20px;
 }
+#namirniceStyle {
+	background: url( "images/pastel4.jpg") center center / cover no-repeat fixed;
+	padding: 20px;
+	width: 400px;
+	height: 20px;
+	margin: 0 auto;
+	border-radius: 20px;
+	text-align: center;
+}
+#namirniceStyle a {
+	text-decoration: none;
+}
 #newPostTitleStyle,
 #newPostContentStyle {
 	display: flex;
@@ -208,12 +218,13 @@ table, tr, td {
 	margin-bottom: 7px;
 	margin-left: 5px;
 }
-#blogButton {
+#blogButton,
+.blogButton {
 	background-color: #FFF;
 	color: #000345;
 	border-radius: 5%;
 	font-family: 'Balsamiq Sans';
-	margin: 7px 0 0 170px;
+	margin: 7px 0 0 155px;
 }
 #title {
 	text-align: center;
@@ -239,4 +250,7 @@ table, tr, td {
 	border-radius: 5%;
 	font-family: 'Balsamiq Sans';
 	margin: 7px 0 0 170px;
+}
+#namirnice {
+	padding: 20px 0 30px 60px;
 }

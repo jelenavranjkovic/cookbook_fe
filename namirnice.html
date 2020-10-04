@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Recepti</title>
+	<title>Blog</title>
 	<link href="style.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -10,7 +10,7 @@
 	<script src="script.js" type="text/javascript"></script>
 
 </head>
-<body onload="getAllRecipes()">
+<body onLoad="getAllBlogs()">
 
 		<div id="login-form" class="login-form login-hidden">
 		<div class="login-form-content">
@@ -46,36 +46,17 @@
 					<li><a href="recepti.html">RECEPTI</a></li>
 					<li><a href="blog.html">BLOG</a></li>
 					<li><a href="#kontakt">KONTAKT</a></li>
-					<li><button id="btnSubmit" onClick="login()">prijavite se</button></li>
+					<li><button id="btnSubmit" onClick="login()" type="reset">prijavite se</button></li>
 					<li><button id="btnSubmit" onclick="logout()">odjavite se</button></li>
 				</ul>
 		</nav>
 	</header>
 
-		<section>
+	<section>
 
-			<h1>Recepti</h1>
+		<img id="namirnice" src="images/namirnice.png" />
 
-			<a name="recepti"></a>
-
-			<br>
-
-			<div id="newPostStyle" class="hiddenButton">
-
-		<div id="newPostTitleStyle">	Naslov:	<input id="newPostTitle" class="hiddenButton" type="text"/> </div>
-		<div id="newPostContentStyle">	Sadržaj: <input id="newPostContent" class="hiddenButton" type="text"/> </div>
-		<div>	<button onClick="createPost('RECIPE')" class="hiddenButton" id="blogButton">Dodaj recept</button> </div>
-
-			</div>
-
-			<br>
-			<br>
-
-			<div id="komentarPrikaz"></div>
-
-			<div id="receptiPrikaz"></div>
-
-		</section>
+	</section>
 
 	<div>
 			<a href="#BackToTop" class="BackToTop">NA POČETAK</a>
